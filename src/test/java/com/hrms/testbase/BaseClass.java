@@ -47,14 +47,14 @@ public static WebDriver setUp() {
 		
 		
 		WebDriverManager.firefoxdriver().setup();
-		FirefoxOptions fOption =new FirefoxOptions();
-		if (headless.equalsIgnoreCase("true")) {
-			fOption.setHeadless(true);
-			driver=new FirefoxDriver(fOption);
-		}else {
-			driver=new FirefoxDriver(fOption);
+//		FirefoxOptions fOption =new FirefoxOptions();
+//		if (headless.equalsIgnoreCase("true")) {
+//			fOption.setHeadless(true);
+//			driver=new FirefoxDriver(fOption);
+//		}else {
+			driver=new FirefoxDriver();
 			
-		}
+//		}
 		
 		
 		break;
