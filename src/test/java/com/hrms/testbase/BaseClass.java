@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import com.hrms.utilis.ConfigsReader;
 import com.hrms.utilis.Constants;
@@ -42,8 +43,20 @@ public static WebDriver setUp() {
 	break;
 	
 	case"firefox":
+		
+		
+		
 		WebDriverManager.firefoxdriver().setup();
-		driver=new FirefoxDriver();
+		FirefoxOptions fOption =new FirefoxOptions();
+		if (headless.equalsIgnoreCase("true")) {
+			fOption.setHeadless(true);
+			driver=new FirefoxDriver(fOption);
+		}else {
+			driver=new FirefoxDriver(fOption);
+			
+		}
+		
+		
 		break;
 		default:
 			throw new RuntimeException("Browser is not supported");
