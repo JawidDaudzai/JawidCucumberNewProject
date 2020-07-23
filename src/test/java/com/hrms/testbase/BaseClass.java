@@ -38,7 +38,7 @@ public static WebDriver setUp() {
 		
 		
 	}else {
-		driver=new ChromeDriver(cOption);
+		driver=new ChromeDriver();
 	}
 	break;
 	

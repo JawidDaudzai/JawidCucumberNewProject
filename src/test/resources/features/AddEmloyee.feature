@@ -6,7 +6,7 @@ Feature: Add new Employee
     Given user is logged with valid admin credentials
     And user navigates to AddEmployeePage
 
-  @smoke
+  @regression
   Scenario: Add Employee with first and lastname
     When user enters employees "John" and "Doe"
     And user clicks save button
