@@ -28,9 +28,11 @@ public class MetaData {
 		DatabaseMetaData dbMetaData = conn.getMetaData();
 		String driverName=dbMetaData.getDriverName();
 		String dbVersion =dbMetaData.getDatabaseProductVersion();
+		String username = dbMetaData.getUserName();
 		
 		System.out.println(driverName);
 		System.out.println(dbVersion);
+		System.out.println(username);
 		
 		
 	}
