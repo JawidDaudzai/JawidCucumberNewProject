@@ -71,30 +71,31 @@ public class DBUtils {
 	 * 
 	 */
 	
-		public static List<Map<String, String>> storeDataFromDB(String sql){
-					
-			try {
-				st=conn.createStatement();
-				rs=st.executeQuery(sql);
-				ResultSetMetaData rsMetaData=rs.getMetaData();
-				listData= new ArrayList<>();
-				
-				
-				while(rs.next()) {
-					Map<String, String> mapData= new LinkedHashMap<>();
-					for (int i=1; i<=rsMetaData.getColumnCount(); i++) {
-						mapData.put(rsMetaData.getColumnName(i), rs.getObject(i).toString());
-						
-						
-					}
-					listData.add(mapData);
-					
+	public static List<Map<String, String>> storeDataFromDB(String sqlQuery) {
+		try {
+			getConnection();
+			st = conn.createStatement();
+			rs = st.executeQuery(sqlQuery);
+			ResultSetMetaData rsMetaData = rs.getMetaData();
+			listData = new ArrayList<>();
+
+			while (rs.next()) {
+				Map<String, String> mapData = new LinkedHashMap<>();
+				for (int i = 1; i <= rsMetaData.getColumnCount(); i++) {
+					mapData.put(rsMetaData.getColumnName(i), rs.getObject(i).toString());
 				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
+				listData.add(mapData);
 			}
-			return listData;	
-					
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		
+		return listData;
+	}
+	
+	
+	
+	
+	
 		}

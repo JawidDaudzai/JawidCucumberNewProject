@@ -63,7 +63,12 @@ public class JDBCDemo {
 		
 		Statement st= conn.createStatement();
 		
-		ResultSet rs = st.executeQuery("select * from ohrm_job_title");
+		
+		//String sqlQuery= "select job_title from ohrm_job_title where job_title =is_deleted order by job_title";
+		
+		ResultSet rs = st.executeQuery("select job_title from ohrm_job_title where job_title =is_deleted order by job_title");
+		
+		//ResultSet rs = st.executeQuery("select * from ohrm_job_title");
 		
 		List<String> jobTitle = new ArrayList<>();
 	

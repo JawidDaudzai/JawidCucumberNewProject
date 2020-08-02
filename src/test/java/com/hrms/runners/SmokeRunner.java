@@ -12,7 +12,7 @@ import io.cucumber.junit.CucumberOptions;
 		//dryRun=true, 
 		monochrome = true
 		,strict=true
-	,tags= "@Smoke"
+	,tags= "@Jawid"
 	
 		, plugin= { "pretty",
 				"html:target\\cucumber-default-report",

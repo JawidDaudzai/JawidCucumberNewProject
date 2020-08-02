@@ -1,12 +1,19 @@
 package com.hrms.pages;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.hrms.testbase.BaseClass;
 
-public class ViewEmployeePageElements {
+public class ViewEmployeePageElements extends BaseClass {
 
 	
 	
@@ -31,9 +38,118 @@ public class ViewEmployeePageElements {
 		@FindBy(xpath="//*[@id=\"resultTable\"]/tbody/tr/td[3]")
 		public WebElement empNameValidation;
 		
-	   
+		@FindBy(xpath="//a[contains(text(),'Adams')] ")
+		public WebElement search;
 		
-
+		@FindBy(xpath="//a[@href='/humanresources/symfony/web/index.php/pim/viewJobDetails/empNumber/14457']")
+		public WebElement job;
+		
+		@FindBy(id="btnSave")
+		public WebElement edit;
+		
+//		@FindBy(name="empsearch[job_title]")
+//		public List<WebElement> jobTitle;
+		
+//		@FindBy(id="//*[@id=\"resultTable\"]//tbody/tr/td/a")
+//		public List<WebElement> jobTitle;
+		
+		
+		@FindBy(xpath="//*[@id=\"resultTable\"]")
+		public List<WebElement> jobTitle;
+		
+		//*[@id="resultTable"]//tbody/tr/td/a
+		
+		@FindBy (xpath="//*[@id='resultTable']//tbody/tr/td/a")
+		public static List <WebElement> JobTitlenames;
+		
+		public List<Map<String, String>> getAllJobTitleDropDown(List<WebElement> namelist) {
+			List<Map<String, String>> jobTilelist = new ArrayList<>();
+			List<WebElement> jtlist = namelist;
+			for (WebElement row : jtlist) {
+				Map<String, String> storeJobTitles = new LinkedHashMap<>();
+				String tableName = row.getText();
+				storeJobTitles.put("job_title", tableName);
+				jobTilelist.add(storeJobTitles);
+			}
+			return jobTilelist;
+		}
+		
+		
+		public List<Map<String, String>> getAllJobTitleDropDown() {
+			List<Map<String, String>> jobTilelist = new ArrayList<>();
+			
+			List <WebElement> JobTitlenames= driver.findElements(By.xpath("//*[@id='resultTable']//tbody/tr/td/a"));
+			
+			for (int i=0; i<JobTitlenames.size(); i++) {
+				
+				Map<String, String> storeJobTitles = new LinkedHashMap<>();
+				String tableName=JobTitlenames.get(i).getText();
+				storeJobTitles.put("job_title", tableName);
+				jobTilelist.add(storeJobTitles);
+			}
+			return jobTilelist;
+		}
+//	
+//		public  List<Map<String, String>> getAllJobTitleDropDown(){
+//		
+//	 List<Map<String, String>> jobTilelist= new ArrayList<>();
+//			
+//	for (WebElement row : jobTitle) {
+//				
+//	Map<String, String> storeJobTitles= new LinkedHashMap<>();
+//				
+//				
+//		String tableName=row.getText();
+//				
+//		storeJobTitles.put("job_title", tableName);
+//				
+//		jobTilelist.add(storeJobTitles);
+//				
+//			
+//			}
+//			return jobTilelist;
+//			
+//			
+//		}
+		
+//		public  List<String> getAllJobTitleDropDown(){
+//			
+//			 List<String> jobTilelist= new ArrayList<>();
+//					
+//			for (WebElement row : jobTitle) {
+////						
+////		//	Map<String, String> storeJobTitles= new LinkedHashMap<>();
+////						
+////						
+//				String tableName=row.getText();
+////						
+////				//storeJobTitles.put("job_title", tableName);
+////						
+//				jobTilelist.add(tableName);
+//						
+//					
+//					}
+//					return jobTilelist;
+//					
+					
+//				}
+//		
+		
+		@FindBy(id="menu_admin_viewAdminModule")
+		public WebElement adminBTN;
+		
+		@FindBy(id="menu_admin_viewJobTitleList")
+		public WebElement Joblist;
+		
+		@FindBy(id="menu_admin_Job")
+		public WebElement Jobmenue;
+		
+		
+		@FindBy (xpath="//*[@id='resultTable']//tbody/tr/td/a")
+		public static List <WebElement> JobTitlenames2;
+		
+		
+		
 		public ViewEmployeePageElements() {
 			PageFactory.initElements(BaseClass.driver, this);
 		}

@@ -69,8 +69,6 @@ public class WorkflowAllSteps {
 	@When("a GET call is made to retrieve the created employee")
 	public void a_GET_call_is_made_to_retrieve_the_created_employee() {
 	response = request.when().get(APIConstants.GET_ONE_EMPLOYEE_ENDPOINT);
-	 
-		
 		
 	}
 
