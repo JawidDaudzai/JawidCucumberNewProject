@@ -22,3 +22,22 @@ Feature: Syntax HRMS API End to End Workflow
     And the retrieved data at "employee" matches the data used to create an employee with employee ID "employee[0].employee_id"
       | emp_firstname   | emp_middle_name  | emp_lastname   | emp_birthday | emp_gender | emp_job_title   | emp_status |
       | syntaxFirstName | syntaxMiddleName | syntaxLastName | 2000-07-11   | Female     | Cloud Architect | Employee   |
+
+      
+      Scenario: Updating created employee
+    Given a request is prepared to update the created employee
+    When a PUT call is made to update the created employee
+    Then the status code for putting the created employee is 201
+    
+     Scenario: Partially updating created employee
+    Given a request is prepared to partially update the created employee
+    When a PATCH call is made to partially update the created employee
+    Then the status code for putting the partially updated employee is 201
+    
+    
+    
+     Scenario: Deleting created employee
+    Given a request is prepared to delete the created employee
+    When a DELETE call is made to delete the created employee
+    Then the status code for deleting the created employee is 201
+   

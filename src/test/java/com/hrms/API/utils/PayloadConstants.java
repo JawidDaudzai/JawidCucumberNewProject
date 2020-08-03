@@ -63,13 +63,25 @@ public class PayloadConstants {
 		
 		JSONObject obj= new JSONObject();
 		obj.put("employee_id", WorkflowAllSteps.employeeID);
-		obj.put("emp_firstname", "syntaxFirstName");
+		obj.put("emp_firstname", "Jawid");
 		obj.put("emp_lastname", "syntaxLastName");
 		obj.put("emp_middle_name","syntaxMiddleName" );
 		obj.put("emp_gender","F" );
 		obj.put("emp_birthday", "2000-07-11");
 		obj.put("emp_status","Employee" );
 		obj.put("emp_job_title","Cloud Architect" );
+		
+	return	obj.toString();
+	}
+	
+	
+public static String PupdateCreatedEmployeePayload() {
+		
+		JSONObject obj= new JSONObject();
+		obj.put("employee_id", WorkflowAllSteps.employeeID);
+		obj.put("emp_firstname", "Jawid");
+		obj.put("emp_lastname", "syntaxLastName");
+		
 		
 	return	obj.toString();
 	}

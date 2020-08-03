@@ -1,14 +1,7 @@
 package com.hrms.API.steps.practice;
 
-import io.cucumber.datatable.DataTable;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-import static org.hamcrest.Matchers.*;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 import java.util.List;
 import java.util.Map;
@@ -17,10 +10,16 @@ import java.util.Set;
 import org.apache.http.entity.ContentType;
 import org.junit.Assert;
 
-import static io.restassured.RestAssured.*;
-
 import com.hrms.API.utils.APIConstants;
 import com.hrms.API.utils.PayloadConstants;
+
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 public class WorkflowAllSteps {
 	String BaseURI = RestAssured.baseURI = "http://18.232.148.34/syntaxapi/api";
@@ -100,5 +99,94 @@ public class WorkflowAllSteps {
 					index++;
 				}
 				 String empID=response.body().jsonPath().getString(responseEmployeeID);
-				   Assert.assertTrue(empID.contentEquals(employeeID));
-}}
+				   Assert.assertTrue(empID.contentEquals(employeeID));		   
+				   
+				   
+}
+	   
+@Given("a request is prepared to update the created employee")
+public void a_request_is_prepared_to_update_the_created_employee() {
+	
+	request = given().header("Content-Type", "application/json").header("Authorization", TokenGenerationSteps.token)
+			.body(PayloadConstants.updateCreatedEmployeePayload());
+	
+	
+   
+}
+
+@When("a PUT call is made to update the created employee")
+public void a_PUT_call_is_made_to_update_the_created_employee() {
+	response = request.when().put(APIConstants.UPDATE_EMPLOYEE_ENDPOINT);
+}
+
+@Then("the status code for putting the created employee is {int}")
+public void the_status_code_for_putting_the_created_employee_is(int StatusCode) {
+  
+	response.then().assertThat().statusCode(StatusCode);
+	response.then().assertThat().body("Message", equalTo("Entry updated"));
+}
+
+
+
+@Given("a request is prepared to partially update the created employee")
+public void a_request_is_prepared_to_partially_update_the_created_employee() {
+
+//	request = given().header("Content-Type", "application/json").header("Authorization", TokenGenerationSteps.token)
+//			.body("{\r\n" + 
+//					"  \"employee_id\": \""+employeeID+"\",\r\n" + 
+//					"  \"emp_firstname\": \"Ahmet\"\r\n" + 
+//					"}");
+
+	request =given().header("Content-Type", "application/json")
+	.header("Authorization", TokenGenerationSteps.token ).body(PayloadConstants.PupdateCreatedEmployeePayload());
+}
+
+@When("a PATCH call is made to partially update the created employee")
+public void a_PATCH_call_is_made_to_partially_update_the_created_employee() {
+	
+	
+	response =request.when().patch(APIConstants.PARTIAL_UPDATE_EMPLOYEE_ENDPOINT);
+	
+	
+	
+}
+
+@Then("the status code for putting the partially updated employee is {int}")
+public void the_status_code_for_putting_the_partially_updated_employee_is(int StatusCode) {
+	
+	
+	response.prettyPrint();
+	response.then().assertThat().body("employee[0].employee_id", equalTo(employeeID));
+	
+	response.then().assertThat().statusCode(StatusCode);
+	response.then().assertThat().body("Message", equalTo("Entry updated"));
+	
+}
+
+@Given("a request is prepared to delete the created employee")
+public void a_request_is_prepared_to_delete_the_created_employee() {
+ 
+	
+	request=given().header("Content-Type", "application/json")
+			.header("Authorization",  TokenGenerationSteps.token).queryParam("employee_id", employeeID);
+}
+
+@When("a DELETE call is made to delete the created employee")
+public void a_DELETE_call_is_made_to_delete_the_created_employee() {
+  
+	response = request.when().delete(APIConstants.DELETE_EMPLOYEE_ENDPOINT);
+	
+}
+
+@Then("the status code for deleting the created employee is {int}")
+public void the_status_code_for_deleting_the_created_employee_is(int StatusCode) {
+   
+	response.then().assertThat().statusCode(StatusCode);
+	response.then().assertThat().body("message", equalTo("Entry deleted"));
+	
+}
+   
+}
+
+
+
