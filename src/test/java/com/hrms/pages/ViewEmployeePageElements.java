@@ -50,35 +50,29 @@ public class ViewEmployeePageElements extends BaseClass {
 //		@FindBy(name="empsearch[job_title]")
 //		public List<WebElement> jobTitle;
 		
-//		@FindBy(id="//*[@id=\"resultTable\"]//tbody/tr/td/a")
-//		public List<WebElement> jobTitle;
-		
 		
 		@FindBy(xpath="//*[@id=\"resultTable\"]")
 		public List<WebElement> jobTitle;
 		
-		//*[@id="resultTable"]//tbody/tr/td/a
-		
+
 		@FindBy (xpath="//*[@id='resultTable']//tbody/tr/td/a")
-		public static List <WebElement> JobTitlenames;
+				public List <WebElement> JobTitlenames;
 		
-		public List<Map<String, String>> getAllJobTitleDropDown(List<WebElement> namelist) {
+//		public List<Map<String, String>> getAllJobTitleDropDown(List<WebElement> namelist) {
+//			List<Map<String, String>> jobTilelist = new ArrayList<>();
+//			List<WebElement> jtlist = namelist;
+//			for (WebElement row : jtlist) {
+//				Map<String, String> storeJobTitles = new LinkedHashMap<>();
+//				String tableName = row.getText();
+//				storeJobTitles.put("job_title", tableName);
+//				jobTilelist.add(storeJobTitles);
+//			}
+//			return jobTilelist;
+//		}
+		
+		
+		public List<Map<String, String>> getAllJobTitleDropDown(List<WebElement>JobTitlenames) {
 			List<Map<String, String>> jobTilelist = new ArrayList<>();
-			List<WebElement> jtlist = namelist;
-			for (WebElement row : jtlist) {
-				Map<String, String> storeJobTitles = new LinkedHashMap<>();
-				String tableName = row.getText();
-				storeJobTitles.put("job_title", tableName);
-				jobTilelist.add(storeJobTitles);
-			}
-			return jobTilelist;
-		}
-		
-		
-		public List<Map<String, String>> getAllJobTitleDropDown() {
-			List<Map<String, String>> jobTilelist = new ArrayList<>();
-			
-			List <WebElement> JobTitlenames= driver.findElements(By.xpath("//*[@id='resultTable']//tbody/tr/td/a"));
 			
 			for (int i=0; i<JobTitlenames.size(); i++) {
 				
@@ -89,52 +83,8 @@ public class ViewEmployeePageElements extends BaseClass {
 			}
 			return jobTilelist;
 		}
-//	
-//		public  List<Map<String, String>> getAllJobTitleDropDown(){
-//		
-//	 List<Map<String, String>> jobTilelist= new ArrayList<>();
-//			
-//	for (WebElement row : jobTitle) {
-//				
-//	Map<String, String> storeJobTitles= new LinkedHashMap<>();
-//				
-//				
-//		String tableName=row.getText();
-//				
-//		storeJobTitles.put("job_title", tableName);
-//				
-//		jobTilelist.add(storeJobTitles);
-//				
-//			
-//			}
-//			return jobTilelist;
-//			
-//			
-//		}
-		
-//		public  List<String> getAllJobTitleDropDown(){
-//			
-//			 List<String> jobTilelist= new ArrayList<>();
-//					
-//			for (WebElement row : jobTitle) {
-////						
-////		//	Map<String, String> storeJobTitles= new LinkedHashMap<>();
-////						
-////						
-//				String tableName=row.getText();
-////						
-////				//storeJobTitles.put("job_title", tableName);
-////						
-//				jobTilelist.add(tableName);
-//						
-//					
-//					}
-//					return jobTilelist;
-//					
-					
-//				}
-//		
-		
+
+
 		@FindBy(id="menu_admin_viewAdminModule")
 		public WebElement adminBTN;
 		
@@ -143,11 +93,6 @@ public class ViewEmployeePageElements extends BaseClass {
 		
 		@FindBy(id="menu_admin_Job")
 		public WebElement Jobmenue;
-		
-		
-		@FindBy (xpath="//*[@id='resultTable']//tbody/tr/td/a")
-		public static List <WebElement> JobTitlenames2;
-		
 		
 		
 		public ViewEmployeePageElements() {

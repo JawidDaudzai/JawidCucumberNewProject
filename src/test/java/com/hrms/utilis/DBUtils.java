@@ -17,8 +17,8 @@ public class DBUtils {
 	private static Statement st;
 	private static ResultSet rs;
 	private static ResultSetMetaData rsMetaData;
-	private static List<Map<String, String>> listData;
-	private static Map<String, String> mapData;
+	public static List<Map<String, String>> listData;
+	public static Map<String, String> mapData;
 	
 	
 	
@@ -78,24 +78,35 @@ public class DBUtils {
 			rs = st.executeQuery(sqlQuery);
 			ResultSetMetaData rsMetaData = rs.getMetaData();
 			listData = new ArrayList<>();
-
+			Map<String, String> mapData;
+			
+			
 			while (rs.next()) {
-				Map<String, String> mapData = new LinkedHashMap<>();
+				
+				
+				mapData = new LinkedHashMap<>();
+				
 				for (int i = 1; i <= rsMetaData.getColumnCount(); i++) {
+					
 					mapData.put(rsMetaData.getColumnName(i), rs.getObject(i).toString());
+					
+					
 				}
 				listData.add(mapData);
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
 		}
+	return listData;	
 		
-		return listData;
 	}
+}
+	
+
 	
 	
 	
-	
-	
-		}
+		
+
