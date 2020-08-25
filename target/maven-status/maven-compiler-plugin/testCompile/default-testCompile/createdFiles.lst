@@ -8,6 +8,7 @@ com\hrms\utilis\ExcelUtility.class
 com\hrms\practice\JdbcHW1.class
 com\hrms\testbase\BaseClass.class
 com\hrms\utilis\ConfigsReader.class
+com\hrms\practice\InterviewPracticeClass.class
 com\hrms\API\steps\practice\HardcodedExamples.class
 com\hrms\API\utils\APIConstants.class
 com\hrms\runners\APIWorkflowRunner.class
