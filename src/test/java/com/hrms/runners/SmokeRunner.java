@@ -10,8 +10,8 @@ import io.cucumber.junit.CucumberOptions;
 		features = "src\\test\\resources\\features", 
 		glue="com\\hrms\\steps", 
 		//dryRun=true, 
-		monochrome = true
-		,strict=true
+		monochrome = true,
+		strict=true
 	,tags= "@Jawid"
 	
 		, plugin= { "pretty",

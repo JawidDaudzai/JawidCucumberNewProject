@@ -7,6 +7,8 @@ import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.*;
 
+import com.hrms.API.utils.APIConstants;
+
 public class TokenGenerationSteps {
 
 	
@@ -22,8 +24,10 @@ public class TokenGenerationSteps {
 	
 	@Given("a JWT is generated")
 	public void a_JWT_is_generated() {
+		
+		
 	 
-System.out.println("Good");
+//System.out.println("Good");
 		
 	RequestSpecification generateTokenRequest=	given().header("Content-Type", "application/json")
 			.body("{\r\n" + 
@@ -31,7 +35,7 @@ System.out.println("Good");
 					"  \"password\": \"GoodToGo3#@\"\r\n" + 
 					"}");
 	
-	Response generateTokenResponse=generateTokenRequest.when().post("/generateToken.php");
+	Response generateTokenResponse=generateTokenRequest.when().post(APIConstants.GENERATE_TOKEN_ENDPOINT);
 		
 	//generateTokenResponse.prettyPrint();
 	
