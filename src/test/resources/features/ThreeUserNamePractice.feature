@@ -9,7 +9,7 @@ Then user validates "Welcome Admin" text is available
 
 Scenario: negative test
 Given user log in to HRMS application
-When user enters "admin" and "Hum@nhrm1233"
+When user enters "admin" and "Hum@nhrm123"
 Then user validates "Welcome Admin" text is available
 
 
