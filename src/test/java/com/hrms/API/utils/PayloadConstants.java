@@ -85,4 +85,15 @@ public static String PupdateCreatedEmployeePayload() {
 		
 	return	obj.toString();
 	}
+
+
+public static String userIDtoGenerateToken() {
+	
+	String IDToGenerateToken="{\r\n" + "  \"email\": \"jawid.kabul@gmail.com\",\r\n" + "  \"password\": \"GoodToGo3#@\"\r\n" + "}";
+	
+	return IDToGenerateToken;
+	
+	
+	
+}
 }

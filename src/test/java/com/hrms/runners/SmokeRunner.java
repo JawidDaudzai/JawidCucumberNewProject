@@ -9,10 +9,10 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions (
 		features = "src\\test\\resources\\features", 
 		glue="com\\hrms\\steps", 
-		//dryRun=true, 
+		dryRun=false, 
 		monochrome = true,
 		strict=true
-	,tags= "@Jawid"
+	,tags= "@Positive"
 	
 		, plugin= { "pretty",
 				"html:target\\cucumber-default-report",
