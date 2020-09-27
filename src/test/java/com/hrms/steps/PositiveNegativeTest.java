@@ -42,6 +42,7 @@ driver.get(ConfigsReader.getProperty("url"));
 		String Name=ActualName.getText();
 		System.out.println(Name);
 		Assert.assertEquals(expectedname, Name);
+		System.out.println("I worked on this");
 		
 //		
 //		boolean name=  ActualName.isDisplayed();
