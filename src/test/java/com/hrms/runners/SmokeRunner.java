@@ -12,7 +12,7 @@ import io.cucumber.junit.CucumberOptions;
 		dryRun=false, 
 		monochrome = true,
 		strict=true
-	,tags= "@Positive"
+	,tags= "@ExcelExample1"
 	
 		, plugin= { "pretty",
 				"html:target\\cucumber-default-report",
