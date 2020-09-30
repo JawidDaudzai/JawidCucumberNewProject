@@ -1,11 +1,14 @@
 com\hrms\pages\HrmLoginPageElements.class
 com\hrms\steps\HassanpracticeDatabaseSteps.class
+com\hrms\steps\ExcelExm1.class
 com\hrms\API\utils\PayloadConstants.class
 com\hrms\API\steps\practice\MyPracticeSteps.class
+com\hrms\steps\ExcelFileReading.class
 com\hrms\steps\PositiveNegativeTest.class
 com\hrms\API\steps\practice\TokenGenerationSteps.class
 com\hrms\utilis\ExcelUtility.class
 com\hrms\testbase\BaseClass.class
+com\hrms\steps\DataTableExample.class
 com\hrms\utilis\ConfigsReader.class
 com\hrms\API\steps\practice\HardcodedExamples.class
 com\hrms\API\utils\APIConstants.class

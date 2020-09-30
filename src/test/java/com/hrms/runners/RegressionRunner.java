@@ -14,7 +14,7 @@ import io.cucumber.junit.CucumberOptions;
 					// if set to true no actual execution will happen
 		monochrome = true
 		,strict=true
-	,tags= "@Positive"
+	,tags= "@MyYouTubeRegression"
 		, plugin= { "pretty",
 				"html:target\\cucumber-default-report",
 				"json:target\\cucumber.json"
